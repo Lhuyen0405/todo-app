@@ -1,0 +1,47 @@
+TÌM HIỂU VỀ PARAMS , QUERY , BODY TRONG MỘT API
+I.	Giới thiệu chung về API
+-	API (Application Programming Interface) là giao diện cho phép các ứng dụng giao tiếp với nhau, thường thông qua giao thức HTTP.
+-	Một HTTP request cơ bản bao gồm:
+●	URL: địa chỉ tài nguyên.
+●	Headers: thông tin thêm (token, content-type...).
+●	Method: phương thức (GET, POST, PUT, DELETE…)
+●	Body: dữ liệu gửi kèm (nếu có).
+II.	Phân tích từng thành phần
+1.	Path Parameters (Params)
+-	Định nghĩa: Là các biến trong đường dẫn URL.
+-	Chức năng: Dùng để xác định tài nguyên cụ thể cần thao tác.
+-	Vị trí: Trong URL, 
+		GET /api/users/:id
+		VD: /api/users/123
+		Lấy thông tin users có id 	123
+2.	Query Parameters (Query)
+-	Định nghĩa: Là cặp key=value nằm sau dấu ? trong URL. Có thể có nhiều cặp nối nhau bằng dấu &
+-	Chức năng: Dùng để lọc, tìm kiếm, phân trang, sắp xếp dữ liệu
+-	Vị trí: Sau URL gốc.
+VD: GET /products?category=shoes&page=2&sort=price_asc
+Lọc sản phẩm theo danh mục "shoes", trang 2, sắp xếp theo giá tăng dần.
+3.	Request Body (Body)
+-	Định nghĩa: Là phần dữ liệu được gửi kèm theo request, thường ở dạng JSON, XML hoặc form.
+-	Chỉ dùng với các method như POST, PUT, PATCH — để gửi nội dung dữ liệu
+-	Chức năng: Truyền dữ liệu chi tiết để tạo hoặc cập nhật tài nguyên.
+VD:	 POST /api/users
+{
+  "name": "Nguyen Van A",
+  "email": "a@example.com"
+}
+Gửi trong phần body của request, thường ở định dạng JSON
+
+
+
+III.   Bảng so sánh tổng hợp
+
+Thành phần	Vị trí			Mục đích		Phương thức thường dùng
+Params	Trong đường dẫn URL	Xác định tài nguyên cụ thể	GET, PUT, DELETE
+Query	Sau dấu ? trong URL		Lọc, tìm kiếm, phân trang	GET
+Body	Trong nội dung request	Gửi dữ liệu để tạo/cập nhật	POST, PUT, PATCH
+
+
+
+
+
+
